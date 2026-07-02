@@ -34,4 +34,7 @@ public class Additive {
     public Additive(String name) {
         this.name = name;
     }
+
+    public Additive() {
+    }
 }

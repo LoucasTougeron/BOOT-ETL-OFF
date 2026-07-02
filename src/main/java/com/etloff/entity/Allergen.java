@@ -34,4 +34,7 @@ public class Allergen {
     public Allergen(String name) {
         this.name = name;
     }
+
+    public Allergen() {
+    }
 }
