@@ -4,6 +4,7 @@ import com.etloff.entity.*;
 import com.etloff.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,6 +56,7 @@ public class EntityResolverService {
      * @param name the cleaned brand name
      * @return the existing or newly created Brand, or null if the name is too long
      */
+    @Cacheable(cacheNames = "brands", key = "#name")
     @Transactional
     public Brand resolveBrand(String name) {
         return resolve(
@@ -71,6 +73,7 @@ public class EntityResolverService {
      * @param name the cleaned category name
      * @return the existing or newly created Category, or null if the name is too long
      */
+    @Cacheable(cacheNames = "categories", key = "#name")
     @Transactional
     public Category resolveCategory(String name) {
         return resolve(
@@ -87,6 +90,7 @@ public class EntityResolverService {
      * @param name the cleaned ingredient name
      * @return the existing or newly created Ingredient, or null if the name is too long
      */
+    @Cacheable(cacheNames = "ingredients", key = "#name")
     @Transactional
     public Ingredient resolveIngredient(String name) {
         return resolve(
@@ -103,6 +107,7 @@ public class EntityResolverService {
      * @param name the cleaned allergen name
      * @return the existing or newly created Allergen, or null if the name is too long
      */
+    @Cacheable(cacheNames = "allergens", key = "#name")
     @Transactional
     public Allergen resolveAllergen(String name) {
         return resolve(
@@ -119,6 +124,7 @@ public class EntityResolverService {
      * @param name the cleaned additive name
      * @return the existing or newly created Additive, or null if the name is too long
      */
+    @Cacheable(cacheNames = "additives", key = "#name")
     @Transactional
     public Additive resolveAdditive(String name) {
         return resolve(
@@ -131,8 +137,6 @@ public class EntityResolverService {
 
     /**
      * Generic resolution logic: look up by name, create and save if not found.
-     * <p>
-     * Names longer than {@link #MAX_NAME_LENGTH} are ignored (returns null).
      *
      * @param name    the cleaned name
      * @param finder  function to look up an entity by name (returns Optional)

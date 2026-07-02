@@ -39,4 +39,11 @@ public class ProductWriter implements ItemWriter<Product> {
     public int getTotalWritten() {
         return totalWritten;
     }
+
+    /**
+     * Resets the internal counter. Intended for test setup only.
+     */
+    public void reset() {
+        this.totalWritten = 0;
+    }
 }

@@ -15,6 +15,7 @@ import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -26,6 +27,7 @@ import org.springframework.transaction.PlatformTransactionManager;
  * </p>
  */
 @Configuration
+@EnableCaching
 public class BatchConfig {
 
     @Value("${etl.csv.path}")
@@ -63,7 +65,7 @@ public class BatchConfig {
     }
 
     /**
-     * ETL step: reads chunks of 100 lines, processes them into Products,
+     * ETL step: reads chunks of 100 lines sequentially, processes them into Products,
      * and writes them to the database.
      */
     @Bean
