@@ -37,4 +37,12 @@ public class Brand {
 
     public Brand() {
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

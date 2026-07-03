@@ -26,6 +26,9 @@ public class Ingredient {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @ManyToMany(mappedBy = "ingredients")
+    private java.util.Set<Product> products = new java.util.HashSet<>();
+
     /**
      * Constructs an Ingredient with the given name.
      *
@@ -36,5 +39,17 @@ public class Ingredient {
     }
 
     public Ingredient() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public java.util.Set<Product> getProducts() {
+        return products;
     }
 }

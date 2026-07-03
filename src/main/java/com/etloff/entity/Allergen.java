@@ -26,6 +26,9 @@ public class Allergen {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @ManyToMany(mappedBy = "allergens")
+    private java.util.Set<Product> products = new java.util.HashSet<>();
+
     /**
      * Constructs an Allergen with the given name.
      *
@@ -36,5 +39,17 @@ public class Allergen {
     }
 
     public Allergen() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public java.util.Set<Product> getProducts() {
+        return products;
     }
 }
