@@ -406,16 +406,3 @@ Les relations ManyToMany entre `Product` et `Ingredient`/`Allergen`/`Additive` s
 ### Cache Spring
 
 Le cache est configuré sur les méthodes de résolution d'entités (`@Cacheable`). En mode développement avec H2 en mémoire, le cache est perdu à chaque redémarrage de l'application.
-
-## 13. Améliorations possibles
-
-- Implémentation d'une interface web pour déclencher le job ETL
-- Ajout de la pagination sur les endpoints REST
-- Migration vers PostgreSQL pour la production
-- Ajout de tests de charge avec JMeter
-- Parallélisation au niveau du processor (si le CPU devient le goulot)
-- Ajout d'un système de logging des erreurs de parsing
-
-## 14. Licence
-
-Projet académique - M2 Renforcement Backend Java
